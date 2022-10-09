@@ -9,8 +9,8 @@ public class MouseLook : MonoBehaviour
     [SerializeField] private float _horizontalSensitivity = 100f;
     [SerializeField] private float _verticalSensitivity = 150f;
     [Header("Camera Settings")]
-    [SerializeField] private float _minVerticalRotation = 0f;
-    [SerializeField] private float _maxVerticalRotation = 180f;
+    [SerializeField] private float _minVerticalRotation = -90f;
+    [SerializeField] private float _maxVerticalRotation = 90f;
 
     private float xRotation;
 
@@ -24,7 +24,7 @@ public class MouseLook : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * _horizontalSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * _verticalSensitivity * Time.deltaTime;
 
-        _playerBody.Rotate(Vector3.forward * mouseX);
+        _playerBody.Rotate(Vector3.up * mouseX);
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, _minVerticalRotation, _maxVerticalRotation);
